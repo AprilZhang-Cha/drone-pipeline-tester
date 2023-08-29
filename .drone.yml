@@ -13,7 +13,7 @@ steps:
   settings:
     create_repository: true
     registry: 795250896452.dkr.ecr.us-east-1.amazonaws.com
-    repo: devops/${DRONE_REPO_NAME}
+    repo: dataplatform/${DRONE_REPO_NAME}
     tags:
     - git-${DRONE_COMMIT_SHA:0:7}
     - latest
@@ -31,9 +31,9 @@ steps:
     chart: mongodb/web-app
     chart_version: 4.12.3
     add_repos: [mongodb=https://10gen.github.io/helm-charts]
-    namespace: devops
+    namespace: dataplatform
     release: myapp
-    values: image.tag=git-${DRONE_COMMIT_SHA:0:7},image.repository=795250896452.dkr.ecr.us-east-1.amazonaws.com/devops/${DRONE_REPO_NAME},ingress.enabled=true,ingress.hosts[0]=myapp.devops.staging.corp.mongodb.com
+    values: image.tag=git-${DRONE_COMMIT_SHA:0:7},image.repository=795250896452.dkr.ecr.us-east-1.amazonaws.com/dataplatform/${DRONE_REPO_NAME},ingress.enabled=true,ingress.hosts[0]=myapp.dataplatform.staging.corp.mongodb.com
     api_server: https://api.staging.corp.mongodb.com
     kubernetes_token:
       from_secret: staging_kubernetes_token
